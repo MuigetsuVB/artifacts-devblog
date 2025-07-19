@@ -48,7 +48,7 @@ The world is now made up of **three layers**:
 - `underground`
 
 Characters using the `Move` endpoint will move within a single layer. But they can now **transition between layers** using the new endpoint:  
-`/my/{character}/action/transition` — with the help of potions or items.
+`/my/{character}/action/transition`. Transitions can occur between multiple layers or between maps within the same layer, and may have an access cost in items or gold. It is also possible to teleport to another layer using a potion.
 
 **Example map object:**
 ```json
