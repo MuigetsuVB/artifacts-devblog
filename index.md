@@ -87,7 +87,7 @@ Characters using the `Move` endpoint will move within a single layer. But they c
 }
 ```
 
-These changes introduce a **map ID**, which uniquely identifies each map — since different layers can share the same coordinates.  
+These changes introduce a **map id**, which uniquely identifies each map — since different layers can share the same coordinates.  
 The existing endpoints will remain compatible with coordinates, now with layer precision, and new endpoints will also support map IDs.
 
 This is a **big transition**, but I’m really excited to introduce it.  
@@ -125,13 +125,13 @@ Monsters now fall into three categories:
 
 ### How Multi-Character Combat Works
 
-Group battles are as simple as regular ones:  
-All characters must be on the monster’s map. A new endpoint allows you to specify which characters will join the fight. You can engage with **up to 3 or 4** characters from your account.
+Group fights are as simple as regular ones: all characters must be on the monster’s map. A new endpoint allows you to specify which characters will join the fight. You can engage with **up to 3 or 4** characters from your account.
 
 > *The feature is still in development, and the final limit on the number of characters in a fight hasn’t been confirmed yet.*
+> 
+The turn order of characters and the monster will be determined by initiative, and the monster's attacks will mainly depend on the threat each character generates.
 
-Since the system is still actively being developed, I’ll wait before diving into the details of equipment, runes, or utilities — but there will be **boss-focused content** with mechanics giving specific **roles** to your characters.
-
+There will be consumables and runes that allow you to assign more **specialized roles** to your characters, such as **healing or tanking**. Update 5.1 should include the first of these items, but a wider variety of strategies and effects will be available with the launch of Season 6.
 ---
 
 ## Sandwhisper Isle
