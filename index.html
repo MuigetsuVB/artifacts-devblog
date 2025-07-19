@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devblog: New Mechanics & Sandwhisper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #1c1c1c;
+    }
+    pre {
+      background: #f1f1f1;
+      padding: 1em;
+      overflow-x: auto;
+      border-left: 4px solid #ccc;
+    }
+    code {
+      background: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 1em 0;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      padding-left: 1em;
+      color: #555;
+      background: #f9f9f9;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: #ccc;
+      margin: 2em 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Devblog: New Mechanics & Sandwhisper</h1>
+
+<p>This devblog covers update <strong>5.1</strong>, coming in August, and introduces two major new systems:</p>
+
+<ul>
+  <li>A new map system with pathfinding and a layer-based world structure</li>
+  <li>Multi-character combat on the same account</li>
+</ul>
+
+<p>Rolling out such big changes mid-season might seem unusual, but it will allow me to analyze player comprehension and balance these mechanics before deploying them across the full game.</p>
+
+<p>These systems will be fully leveraged on <strong>Sandwhisper Isle</strong> and will be rolled out across the game world in the next season. So don't worry about your bots — everything should continue working the same on current content.</p>
+
+<p>But before diving into Sandwhisper, let's take a look at the two new gameplay mechanics.</p>
+
+<hr>
+
+<h2>Map System</h2>
+
+<p>One of the big upcoming changes is the complete rework of the map system. This will bring major changes to how you navigate in <strong>Artifacts</strong>.</p>
+
+<h3>1. Goodbye Rectangular Maps, Welcome Pathfinding (A*)!</h3>
+
+<p>Maps now have an <code>access</code> property, making the world more coherent: with water, mountains, and obstacles. Not all maps will be accessible anymore.</p>
+
+<p>Some maps will require teleportation (via potion), while others will have specific conditions — such as owning an item or reaching a certain level.</p>
+
+<p><strong>Added to the <code>MapSchema</code> model:</strong></p>
+
+<pre><code>{
+  "access": {
+    "type": "standard/blocked/conditional/teleport_required",
+    "conditions": []
+  }
+}</code></pre>
+
+<p>Logs and responses will now include the path your character used, helping you optimize travel.</p>
+
+<h3>2. A World Made of Layers!</h3>
+
+<img src="https://i.imgur.com/90m8D8T.gif" alt="layers">
+
+<p>The world is now made up of <strong>three layers</strong>:</p>
+<ul>
+  <li><code>interior</code></li>
+  <li><code>overworld</code></li>
+  <li><code>underground</code></li>
+</ul>
+
+<p>Characters using the <code>Move</code> endpoint will move within a single layer. But they can now <strong>transition between layers</strong> using the new endpoint:</p>
+
+<p><code>/my/{character}/action/transition</code> — with the help of potions or items.</p>
+
+<p><strong>Example map object:</strong></p>
+
+<pre><code>{
+  "data": {
+    "map_id": 1231,
+    "name": "Sandwhisper Isle",
+    "skin": "desertisland_10",
+    "x": -3,
+    "y": 19,
+    "layer": "overworld",
+    "content": {
+      "type": "monster",
+      "code": "sandwarden"
+    },
+    "access": {
+      "type": "standard",
+      "conditions": []
+    },
+    "transition": {
+      "map_id": 1233,
+      "x": -3,
+      "y": 19,
+      "layer": "interior",
+      "cost": {
+        "gold": null,
+        "items": [
+          {
+            "code": "sandwhisper_key",
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  }
+}</code></pre>
+
+<p>These changes introduce a <strong>map ID</strong>, which uniquely identifies each map — since different layers can share the same coordinates.</p>
+
+<p>The existing endpoints will remain compatible with coordinates, now with layer precision, and new endpoints will also support map IDs.</p>
+
+<p>This is a <strong>big transition</strong>, but I’m really excited to introduce it.</p>
+<p>While only the new zone will benefit from it initially in 5.1, the rest of the game world will be updated progressively.</p>
+
+<hr>
+
+<h2>Multi-Character Combat</h2>
+
+<p>One of the most requested features is finally coming: <strong>multi-character combat</strong>, arriving with update <strong>5.1</strong>!</p>
+
+<p>This required several fundamental changes to the combat system.</p>
+
+<h3>Changes to the Combat System</h3>
+
+<p>Gone are the days of your character always starting first. Introducing a new stat: <strong>initiative</strong> — determining turn order between characters and monsters.</p>
+
+<blockquote><em>All existing monsters will have zero initiative and still act second (as they do now). Their stats will only be updated next season to avoid breaking current scripts.</em></blockquote>
+
+<p>A second new stat is also introduced: <strong>threat</strong> — relevant only for multi-character battles, as it affects which character the monster is likely to attack.</p>
+
+<h3>Monster Types</h3>
+
+<p>Monsters now fall into three categories:</p>
+<ul>
+  <li><code>normal</code></li>
+  <li><code>elite</code>: Stronger than normal monsters of the same level, protecting rare resources (e.g., Lich, Rosenblood)</li>
+  <li><code>boss</code>: The only monsters that can be fought in groups</li>
+</ul>
+
+<h3>How Multi-Character Combat Works</h3>
+
+<p>Group battles are as simple as regular ones:  
+All characters must be on the monster’s map. A new endpoint allows you to specify which characters will join the fight. You can engage with <strong>up to 3 or 4</strong> characters from your account.</p>
+
+<blockquote><em>The feature is still in development, and the final limit on the number of characters in a fight hasn’t been confirmed yet.</em></blockquote>
+
+<p>Since the system is still actively being developed, I’ll wait before diving into the details of equipment, runes, or utilities — but there will be <strong>boss-focused content</strong> with mechanics giving specific <strong>roles</strong> to your characters.</p>
+
+<hr>
+
+<h2>Sandwhisper Isle</h2>
+
+<img src="https://i.imgur.com/5fRjfZt.png" alt="Logo">
+
+<p><strong>Sandwhisper Isle</strong> is the new zone for characters <strong>level 40 to 50</strong>.</p>
+
+<p>It includes <strong>new resources</strong>, <strong>five new monsters</strong> (including <strong>two group bosses</strong>), and is the <strong>first zone to use the new map system</strong>.</p>
+
+<img src="https://i.imgur.com/K19j71Y.png" alt="island">
+<img src="https://i.imgur.com/Yj2Roj9.png" alt="island">
+<img src="https://i.imgur.com/MEWeqUS.png" alt="layer">
+
+<p>The island will cost <strong>1000 gold per trip</strong>, so you might want to find a way to access its bank.<br>
+Apparently, you’ll need to <strong>earn its trust</strong> before they’ll let you in...</p>
+
+<p>Too many pirates have been trying to loot the island...</p>
+
+<hr>
+
+<p>For now, I’ll stop here and let you discover the <strong>bosses and secrets</strong> of this mysterious new island.<br>
+See you in <strong>August</strong>!</p>
+
+<p>Thanks,<br><strong>muigetsu</strong></p>
+
+</body>
+</html>
