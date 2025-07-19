@@ -128,13 +128,14 @@ Monsters now fall into three categories:
 Group fights are as simple as regular ones: all characters must be on the monster’s map. A new endpoint allows you to specify which characters will join the fight. You can engage with **up to 3 or 4** characters from your account.
 
 > *The feature is still in development, and the final limit on the number of characters in a fight hasn’t been confirmed yet.*
-> 
+
 The turn order of characters and the monster will be determined by initiative, and the monster's attacks will mainly depend on the threat each character generates.
 
 There will be consumables and runes that allow you to assign more **specialized roles** to your characters, such as **healing or tanking**. Update 5.1 should include the first of these items, but a wider variety of strategies and effects will be available with the launch of Season 6.
+
 ---
 
-## Sandwhisper Isle
+## Sandwhisper
 
 ![Logo](https://i.imgur.com/5fRjfZt.png)
 
