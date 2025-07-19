@@ -19,7 +19,7 @@ One of the big upcoming changes is the complete rework of the map system. This w
 
 ---
 
-### 1. Goodbye Rectangular Maps, Welcome Pathfinding (A*)!
+### 1. Goodbye Rectangular World, Welcome Pathfinding (A*)!
 
 Maps now have an `access` property, making the world more coherent: with water, mountains, and obstacles. Not all maps will be accessible anymore.
 
