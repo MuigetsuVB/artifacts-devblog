@@ -19,7 +19,7 @@ One of the big upcoming changes is the complete rework of the map system. This w
 
 ---
 
-### 1. Goodbye Rectangular World, Welcome Pathfinding (A*)!
+### Goodbye Rectangular World, Welcome Pathfinding (A*)!
 
 Maps now have an `access` property, making the world more coherent: with water, mountains, and obstacles. Not all maps will be accessible anymore.
 
@@ -37,7 +37,7 @@ Logs and responses will now include the path your character used, helping you op
 
 ---
 
-### 2. A World Made of Layers!
+### A World Made of Layers!
 
 ![layers](https://i.imgur.com/90m8D8T.gif)
 
