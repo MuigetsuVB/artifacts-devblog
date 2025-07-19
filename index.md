@@ -7,7 +7,7 @@ This devblog covers update **5.1**, coming in August, and introduces two major n
 
 Rolling out such big changes mid-season might seem unusual, but it will allow me to analyze player comprehension and balance these mechanics before deploying them across the full game.
 
-These systems will be fully leveraged on **Sandwhisper Isle** and will be rolled out across the game world in the next season. So don't worry about your bots — everything should continue working the same on current content.
+These systems will be fully leveraged on **Sandwhisper Isle**, the new level 40 to 50 zone, and will be rolled out across the game world in the next season. So don't worry about your bots — everything should continue working the same on current content.
 
 But before diving into Sandwhisper, let's take a look at the two new gameplay mechanics.
 
