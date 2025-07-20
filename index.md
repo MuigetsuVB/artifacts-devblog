@@ -47,12 +47,17 @@ The world is now made up of **three layers**:
 - `overworld`  
 - `underground`
 
-Characters using the `Move` endpoint will move within a single layer. But they can now **transition between layers** using the new endpoint:  
-`/my/{character}/action/transition`. Transitions can occur between multiple layers or between maps within the same layer, and may have an access cost in items or gold. It is also possible to teleport to another layer using a potion.
+Characters using the `Move` endpoint will move within a single layer. 
+
+The new Transition endpoint `/my/{character}/action/transition` allows characters to "teleport" between layers, as well as between different maps within the same layer.  
+It will be used for doors, portals, boats, stairs, and similar means of travel.
+
+Transitions, like maps, can have conditions.  
+New condition types such as `cost` or `has_item` will be introduced.  
+A full page on the condition system will be added to the documentation.
 
 **Example map object:**
 ```json
-{
   "data": {
     "map_id": 1231,
     "name": "Sandwhisper Isle",
@@ -73,15 +78,13 @@ Characters using the `Move` endpoint will move within a single layer. But they c
       "x": -3,
       "y": 19,
       "layer": "interior",
-      "cost": {
-        "gold": null,
-        "items": [
-          {
-            "code": "sandwhisper_key",
-            "quantity": 1
-          }
-        ]
-      }
+      "conditions": [
+        {
+          "code": "sandwhisper_key",
+          "operator": "cost",
+          "value": 1
+        }
+      ]
     }
   }
 }
