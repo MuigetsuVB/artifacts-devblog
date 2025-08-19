@@ -5,9 +5,9 @@
 
 Season 6 will be available on **October 4**! The test server for founders members will be open starting **September 13**.
 
-Cette saison incluera des changements majeurs tel que:
+This season will include major changes such as:
 - A new map system with pathfinding and a layer-based world structure  
-- Combat de boss multi-characters (on the same account)
+- Multi-character boss combat (on the same account)
 
 
 These systems will be fully leveraged on **Sandwhisper Isle**, the new level 40 to 50 zone accessible by taking a boat south of the forest!
