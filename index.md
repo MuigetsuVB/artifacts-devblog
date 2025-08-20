@@ -139,7 +139,7 @@ There will be consumables and runes that allow you to assign more **specialized 
 
 ![bosses](/bosses.png)
 
-Certains monstes tel que Lich et Rosenblood ont été rework et sont maintenant des boss multi-characters. Voici la liste des boss présent au lancement de la saison 6:
+Certain monsters such as Lich and Rosenblood have been reworked and are now multi-character bosses. Here is the list of bosses available at the launch of Season 6:
 
 - King Slime (Lvl 15)
 - Lich (Lvl 30)
