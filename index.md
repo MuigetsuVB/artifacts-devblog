@@ -112,7 +112,7 @@ This required several fundamental changes to the combat system.
 Gone are the days of your character always starting first. Introducing a new stat: **initiative** — determining turn order between characters and monsters.
 
 
-A second new stat is also introduced: **threat** — relevant only for multi-character battles, as it affects which character the monster is likely to attack.
+A second new stat is also introduced: **threat** — relevant only for multi-character fights, as it affects which character the monster is likely to attack.
 
 ---
 
@@ -128,7 +128,7 @@ Monsters now fall into three categories:
 
 ### How Multi-Character Combat Works
 
-Group fights are as simple as regular ones: all characters must be on the monster’s map. The Fight endpoint now lets you specify which characters will join the battle. You can engage with **up to 3** characters from your account in boss fights.
+Group fights are as simple as regular ones: all characters must be on the monster’s map. The Fight endpoint now lets you specify which characters will join the fight. You can engage with **up to 3** characters from your account in boss fights.
 
 The turn order of characters and the monster will be determined by initiative, and the monster's attacks will mainly depend on the threat each character generates.
 
