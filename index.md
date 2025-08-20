@@ -1,4 +1,4 @@
-# Devblog: Season 6 and beyond
+# Devblog: Season 6 and Beyond
 
 ![layers](/intro.png)
 
