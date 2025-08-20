@@ -1,5 +1,4 @@
-# Season 6: New Mechanics & Sandwhisper
-
+# Devblog: Season 6 and beyond
 
 ![layers](/intro.png)
 
@@ -9,14 +8,13 @@ This season will include major changes such as:
 - A new map system with pathfinding and a layer-based world structure  
 - Multi-character boss combat (on the same account)
 
-
-These systems will be fully leveraged on **Sandwhisper Isle**, the new level 40 to 50 zone accessible by taking a boat south of the forest!
+The maximum level will now be 50. The current zone will be updated to integrate these features and a new island for levels 40 to 50 will also be introduced: **Sandwhisper**!
 
 ---
 
 ## Map System
 
-One of the big upcoming changes is the complete rework of the map system. This will bring major changes to how you navigate in **Artifacts**.
+One of the big upcoming changes is the complete rework of the map system. This will bring major changes to how you navigate in **Artifacts**. 
 
 ---
 
@@ -153,7 +151,7 @@ Certain monsters such as Lich and Rosenblood have been reworked and are now mult
 ## Sandwhisper
 
 
-**Sandwhisper Isle** is the new zone for characters **level 40 to 50**. It features **new resources**, **six new monsters** (including **two group bosses**), and will be the first area to fully utilize the new map mechanics.
+**Sandwhisper Isle** is the new zone for characters **level 40 to 50**. It features **new resources**, **six new monsters** (including **two group bosses**), **new NPC**, and will be the first area to fully utilize the new map mechanics.
 
 ![island](https://i.imgur.com/K19j71Y.png)  
 ![island](https://i.imgur.com/Yj2Roj9.png)  
@@ -163,6 +161,27 @@ The island will cost **1000 gold per trip**, so you might want to find a way to 
 Apparently, you’ll need to **earn its trust** before they’ll let you in...
 
 Too many pirates have been trying to loot the island...
+
+---
+
+## Release
+
+To wrap up this devblog, let's talk about the **final steps** before the game's launch after Season 6.
+
+Season 6 is the **last major update** before the official launch, scheduled for **early 2026**. My focus will be **100% on this goal** after Season 6 goes live.
+
+The **official launch season** will include:
+
+- **Economy update:** Addition of buying offers to the Grand Exchange.
+- **Subscription system:** Replacing the founders system.  
+  The game will remain **completely free to play**; subscription features will focus on development tools, minor features (such as websockets and webhooks), statistics, and cosmetics.
+- **New web client:** A complete overhaul with an improved interface, websockets, and an integrated tutorial for new players.  **YES, you will be able to see other players!**
+
+I know there are still many features that players are eager to see, such as **more ways to interact with other players**.  
+I will publish a **post-launch roadmap** around the beginning of 2026.
+
+Development doesn't stop with the launch—**it's just the beginning**.
+
 
 ---
 
