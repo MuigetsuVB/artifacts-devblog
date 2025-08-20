@@ -128,7 +128,7 @@ Monsters now fall into three categories:
 
 ### How Multi-Character Combat Works
 
-Group fights are as simple as regular ones: all characters must be on the monster’s map. Le endpoint Fight vous permettra maintenant de specify which characters will join the fight. You can engage with **up to 3** characters from your account lors de combats de boss.
+Group fights are as simple as regular ones: all characters must be on the monster’s map. The Fight endpoint now lets you specify which characters will join the battle. You can engage with **up to 3** characters from your account in boss fights.
 
 The turn order of characters and the monster will be determined by initiative, and the monster's attacks will mainly depend on the threat each character generates.
 
